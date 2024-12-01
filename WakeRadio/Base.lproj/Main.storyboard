@@ -93,7 +93,7 @@
         <!--AdminPage-->
         <scene sceneID="dnw-dq-uR0">
             <objects>
-                <viewController id="eB3-GH-Zd6" sceneMemberID="viewController">
+                <viewController id="eB3-GH-Zd6" customClass="AdminPage" customModule="WakeRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vfj-mR-d1K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="8TY-PF-bGw" eventType="touchUpInside" id="pce-kD-j7Z"/>
                                     <action selector="loginTouched:" destination="8TY-PF-bGw" eventType="touchUpInside" id="A93-Q6-OwR"/>
-                                    <segue destination="9f8-rF-yp1" kind="show" id="hPD-Gk-hCZ"/>
+                                    <action selector="loginTouched:" destination="eB3-GH-Zd6" eventType="touchUpInside" id="mDf-WV-aAt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUS-Ob-dgK">
@@ -154,6 +154,10 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="AdminPage" id="3ix-ew-Inm"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="ZDF-Jg-y9M" id="1LM-W4-bVw"/>
+                        <outlet property="usernameTextField" destination="pEt-7o-94E" id="DEL-Cx-IGY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbH-O5-nBD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="8TY-PF-bGw" userLabel="Exit" sceneMemberID="exit"/>
@@ -163,9 +167,9 @@
         <!--ResetPage-->
         <scene sceneID="pjR-36-FI1">
             <objects>
-                <viewController title="ResetPage" id="9f8-rF-yp1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPage" title="ResetPage" id="9f8-rF-yp1" customClass="ResetPage" customModule="WakeRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Qb-Xi-lOX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSr-Z0-ccj">
@@ -190,6 +194,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Done"/>
                                 <connections>
+                                    <action selector="doneButtonTouched:" destination="9f8-rF-yp1" eventType="touchUpInside" id="Rq4-ff-ZOX"/>
                                     <segue destination="QLJ-qK-8Al" kind="show" id="zO7-5X-uDW"/>
                                 </connections>
                             </button>
@@ -220,6 +225,10 @@
                         <color key="backgroundColor" systemColor="labelColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="qhV-18-CtJ"/>
+                    <connections>
+                        <outlet property="djNameTextField" destination="CSr-Z0-ccj" id="U9V-CJ-o3c"/>
+                        <outlet property="djStyleTextField" destination="ODn-r6-Yzk" id="uhp-uk-lza"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tta-UJ-5yd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

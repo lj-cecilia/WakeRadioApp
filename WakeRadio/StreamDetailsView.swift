@@ -1,11 +1,10 @@
 import Foundation
 import UIKit
 
+
 class StreamDetailsView: UIViewController {
     @IBOutlet weak var DJName: UITextField!
-    @IBOutlet weak var DJNameUpdated: UITextField!
     @IBOutlet weak var DJStyle: UITextField!
-    @IBOutlet weak var DJStyleUpdated: UITextField!
     @IBOutlet weak var ListenersCurrent: UITextField!
     @IBOutlet weak var ListenersPeak: UITextField!
     
