@@ -1,73 +1,99 @@
-import Foundation
 import UIKit
-
 
 class StreamDetailsView: UIViewController {
     @IBOutlet weak var DJName: UITextField!
     @IBOutlet weak var DJStyle: UITextField!
     @IBOutlet weak var ListenersCurrent: UITextField!
     @IBOutlet weak var ListenersPeak: UITextField!
+
+    // Variables to store DJ info
+    var djName: String {
+        get {
+            UserDefaults.standard.string(forKey: "djName") ?? "Default DJ"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "djName")
+        }
+    }
     
-    var djName: String = "Michael"
-    var djStyle: String = "Mellow, wistful music"
+    var djStyle: String {
+        get {
+            UserDefaults.standard.string(forKey: "djStyle") ?? "Default Style"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "djStyle")
+        }
+    }
+
+    // Variables for listeners
     var listenersCurrent: String = "0"
     var listenersPeak: String = "0"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Default DJ info values displayed
+        
+        // Load and display DJ info
         DJName.text = "DJ Name: \(djName)"
         DJStyle.text = "DJ Style: \(djStyle)"
-        ListenersCurrent.text = "Listeners(current): \(listenersCurrent)"
-        ListenersPeak.text = "Listeners(peak): \(listenersPeak)"
         
-        // Dynamically update the stream stats, the current and peak listeners
+        // Load and display listener stats
+        ListenersCurrent.text = "Listeners (current): \(listenersCurrent)"
+        ListenersPeak.text = "Listeners (peak): \(listenersPeak)"
+        
+        // Fetch listener stats
+        fetchListenerStats()
+    }
+    
+    func updateDJInfo(djName: String, djStyle: String) {
+        self.djName = djName
+        self.djStyle = djStyle
+        DJName.text = "DJ Name: \(djName)"
+        DJStyle.text = "DJ Style: \(djStyle)"
+        print("Updated DJ Info - Name: \(djName), Style: \(djStyle)")
+    }
+
+    private func fetchListenerStats() {
         let urlString = "http://152.17.49.84:8000"
         guard let url = URL(string: urlString) else {
-            print("Error: \(urlString) doesn't seem to be a valid URL")
+            print("Invalid URL")
             return
         }
 
-        do {
-            let html = try String(contentsOf: url, encoding: .ascii)
-            print("HTML : \(html)")
-            
-            // Helper function to extract numbers
-            func extractNumber(from html: String, startingAt startIndex: String.Index) -> String {
-                var currentIndex = startIndex
-                var extractedNumber = ""
-                
-                while currentIndex < html.endIndex, html[currentIndex].isNumber {
-                    extractedNumber.append(html[currentIndex])
-                    currentIndex = html.index(after: currentIndex)
+        DispatchQueue.global().async {
+            do {
+                let html = try String(contentsOf: url, encoding: .ascii)
+                DispatchQueue.main.async {
+                    self.parseListenerStats(from: html)
                 }
-                
-                return extractedNumber
+            } catch {
+                print("Error fetching stats: \(error)")
             }
-            
-            // Extract current listeners
-            let searchString1 = "Listeners (current):</td><td class=\"streamstats\">"
-            if let range = html.range(of: searchString1) {
-                let numberStartIndex = html.index(range.upperBound, offsetBy: 0)
-                let currentListeners = extractNumber(from: html, startingAt: numberStartIndex)
-                ListenersCurrent.text = "Listeners(current): \(currentListeners)"
-                print("Current listeners: \(currentListeners)")
-            } else {
-                print("Search string not found for current listeners")
+        }
+    }
+
+    private func parseListenerStats(from html: String) {
+        func extractNumber(from html: String, startingAt startIndex: String.Index) -> String {
+            var currentIndex = startIndex
+            var extractedNumber = ""
+            while currentIndex < html.endIndex, html[currentIndex].isNumber {
+                extractedNumber.append(html[currentIndex])
+                currentIndex = html.index(after: currentIndex)
             }
-            
-            // Extract peak listeners
-            let searchString2 = "Listeners (peak):</td><td class=\"streamstats\">"
-            if let range = html.range(of: searchString2) {
-                let numberStartIndex = html.index(range.upperBound, offsetBy: 0)
-                let peakListeners = extractNumber(from: html, startingAt: numberStartIndex)
-                ListenersPeak.text = "Listeners(peak): \(peakListeners)"
-                print("Peak listeners: \(peakListeners)")
-            } else {
-                print("Search string not found for peak listeners")
-            }
-        } catch let error {
-            print("Error: \(error)")
+            return extractedNumber
+        }
+
+        let currentKey = "Listeners (current):</td><td class=\"streamstats\">"
+        if let range = html.range(of: currentKey) {
+            let startIndex = html.index(range.upperBound, offsetBy: 0)
+            listenersCurrent = extractNumber(from: html, startingAt: startIndex)
+            ListenersCurrent.text = "Listeners (current): \(listenersCurrent)"
+        }
+
+        let peakKey = "Listeners (peak):</td><td class=\"streamstats\">"
+        if let range = html.range(of: peakKey) {
+            let startIndex = html.index(range.upperBound, offsetBy: 0)
+            listenersPeak = extractNumber(from: html, startingAt: startIndex)
+            ListenersPeak.text = "Listeners (peak): \(listenersPeak)"
         }
     }
 }

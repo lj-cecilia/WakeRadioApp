@@ -18,7 +18,7 @@ class AdminPage: UIViewController {
         let password = passwordTextField.text ?? ""
 
         // Simple authentication logic
-        if username == "admin" && password == "password123" {
+        if username == "admin" && password == "123" {
             print("Login successful")
             
             // Navigate to the ResetPage
@@ -29,12 +29,32 @@ class AdminPage: UIViewController {
         }
     }
     
-    private func navigateToResetPage() {
-        // Assuming "ResetPage" is the storyboard ID for the ResetPage
+    @IBAction func navigateToResetPage() {
         if let resetPageVC = storyboard?.instantiateViewController(withIdentifier: "ResetPage") as? ResetPage {
+            // Check if StreamDetailsView exists in the navigation stack
+            if let navigationStack = navigationController?.viewControllers {
+                for viewController in navigationStack {
+                    if let streamDetailsVC = viewController as? StreamDetailsView {
+                        resetPageVC.streamDetailsView = streamDetailsVC
+                        break
+                    }
+                }
+            }
+            
+            // Verify if the streamDetailsView is set
+            if resetPageVC.streamDetailsView == nil {
+                print("StreamDetailsView not found in navigation stack.")
+            } else {
+                print("StreamDetailsView passed to ResetPage.")
+            }
+            
+            // Navigate to ResetPage
             navigationController?.pushViewController(resetPageVC, animated: true)
+        } else {
+            print("Failed to instantiate ResetPage.")
         }
     }
+
 
     private func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

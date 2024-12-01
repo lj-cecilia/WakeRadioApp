@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rgd-Hy-H0F">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WakeRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image=" gradient" translatesAutoresizingMaskIntoConstraints="NO" id="pdU-Dq-2jz">
@@ -95,7 +95,7 @@
             <objects>
                 <viewController id="eB3-GH-Zd6" customClass="AdminPage" customModule="WakeRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vfj-mR-d1K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEt-7o-94E">
@@ -169,7 +169,7 @@
             <objects>
                 <viewController storyboardIdentifier="ResetPage" title="ResetPage" id="9f8-rF-yp1" customClass="ResetPage" customModule="WakeRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Qb-Xi-lOX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSr-Z0-ccj">
@@ -195,7 +195,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Done"/>
                                 <connections>
                                     <action selector="doneButtonTouched:" destination="9f8-rF-yp1" eventType="touchUpInside" id="Rq4-ff-ZOX"/>
-                                    <segue destination="QLJ-qK-8Al" kind="show" id="zO7-5X-uDW"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ODn-r6-Yzk">
@@ -232,14 +231,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tta-UJ-5yd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="663"/>
+            <point key="canvasLocation" x="763.768115942029" y="662.94642857142856"/>
         </scene>
         <!--StreamDetailsView-->
         <scene sceneID="hgV-ex-sBg">
             <objects>
-                <viewController title="StreamDetailsView" id="QLJ-qK-8Al" customClass="StreamDetailsView" customModule="WakeRadio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StreamDetailsView" title="StreamDetailsView" id="QLJ-qK-8Al" customClass="StreamDetailsView" customModule="WakeRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Jn-ha-2su">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image=" gradient" translatesAutoresizingMaskIntoConstraints="NO" id="mW6-fV-0CD">
@@ -307,8 +306,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="KAZ-3q-8aY"/>
                     <connections>
-                        <outlet property="DJName" destination="dEf-m5-o4Z" id="aep-ec-KBk"/>
-                        <outlet property="DJStyle" destination="luI-Na-RzN" id="N9I-t6-c1o"/>
+                        <outlet property="DJName" destination="dEf-m5-o4Z" id="I0w-8D-RLQ"/>
+                        <outlet property="DJStyle" destination="luI-Na-RzN" id="Dn2-aK-XQ8"/>
                         <outlet property="ListenersCurrent" destination="RoI-Wd-UOh" id="yhg-zm-iFi"/>
                         <outlet property="ListenersPeak" destination="0XB-sn-05K" id="X7x-C1-cHV"/>
                     </connections>
@@ -322,7 +321,7 @@
             <objects>
                 <viewController title="WebsiteView" id="nx9-u9-tkL" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Qt-xV-UaY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfZ-2b-qs7">
@@ -403,7 +402,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rgd-Hy-H0F" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mrf-iK-vyh">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -420,7 +419,7 @@
             <objects>
                 <viewController title="InstagramView" id="4jq-V1-bl3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OY7-Da-Kqb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FyH-6e-MPq">
@@ -499,9 +498,6 @@
             <point key="canvasLocation" x="3104" y="-818"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="zO7-5X-uDW"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name=" gradient" width="3024" height="3365"/>
         <image name="1" width="750" height="750"/>
